@@ -2,9 +2,17 @@
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
+import NavLink from "./NavLink";
+
+const NAV_ITEMS = [
+  { label: "Home", href: "/" },
+  { label: "All Tiles", href: "/tiles" },
+  { label: "My Profile", href: "/profile" },
+];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <>
       <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
@@ -41,47 +49,46 @@ const Navbar = () => {
             </button>
             <div>
               <Image
-                src={"/public/logo.jpg"}
-                height={30}
-                width={30}
+                src="/logo.png"
+                height={50}
+                width={50}
                 alt="Logo"
                 className="object-cover h-auto w-auto"
               />
             </div>
           </div>
+
+          {/* Desktop nav */}
           <ul className="hidden items-center gap-4 md:flex">
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/">All Photos</Link>
-            </li>
-            <li>
-              <Link href="/">Pricing</Link>
-            </li>
-            <li>
-              <Link href="/">Profile</Link>
-            </li>
+            {NAV_ITEMS.map((item) => (
+              <li key={item.href}>
+                <NavLink href={item.href}>{item.label}</NavLink>
+              </li>
+            ))}
           </ul>
-          <ul className="hidden items-center gap-4 md:flex">
+
+          <ul className=" items-center gap-4 flex">
             <li>
               <Link href="#">Login</Link>
             </li>
           </ul>
         </header>
+
+        {/* Mobile nav — reuses the same NAV_ITEMS */}
         {isMenuOpen && (
           <div className="border-t border-separator md:hidden">
             <ul className="flex flex-col gap-2 p-4">
-              <li>
-                <Link href="#" className="block py-2">
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="block py-2">
-                  Pricing
-                </Link>
-              </li>
+              {NAV_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <NavLink
+                    className="block py-2"
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
         )}
