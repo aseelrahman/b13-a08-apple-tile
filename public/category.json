@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cat_001",
+    "name": "Ceramic",
+    "slug": "ceramic"
+  },
+  {
+    "id": "cat_002",
+    "name": "Porcelain",
+    "slug": "porcelain"
+  },
+  {
+    "id": "cat_003",
+    "name": "Marble",
+    "slug": "marble"
+  },
+  {
+    "id": "cat_004",
+    "name": "Mosaic",
+    "slug": "mosaic"
+  },
+  {
+    "id": "cat_005",
+    "name": "Natural Stone",
+    "slug": "natural-stone"
+  },
+  {
+    "id": "cat_006",
+    "name": "Wood Look",
+    "slug": "wood-look"
+  }
+]
