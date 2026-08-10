@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import NavLink from "./NavLink";
+import { Button } from "@heroui/react";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -69,7 +70,9 @@ const Navbar = () => {
 
           <ul className=" items-center gap-4 flex">
             <li>
-              <Link href="#">Login</Link>
+              <Link href="#">
+                <Button>Login</Button>
+              </Link>
             </li>
           </ul>
         </header>

@@ -37,8 +37,8 @@ const Footer = () => {
           <div className="col-span-2 flex flex-col gap-3 md:col-span-1">
             <Image
               src="/logo.png"
-              height={50}
-              width={50}
+              height={300}
+              width={300}
               alt="Logo"
               className="object-cover h-auto w-auto"
             />
@@ -73,13 +73,22 @@ const Footer = () => {
             &copy; {year} Tessera. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            <Link
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
               YouTube
             </Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            <Link
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
               Facebook
             </Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
+            <Link
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
               Instagram
             </Link>
           </div>
