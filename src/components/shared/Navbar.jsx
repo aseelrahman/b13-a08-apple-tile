@@ -70,7 +70,7 @@ const Navbar = () => {
 
           <ul className=" items-center gap-4 flex">
             <li>
-              <Link href="#">
+              <Link href="/login">
                 <Button>Login</Button>
               </Link>
             </li>
