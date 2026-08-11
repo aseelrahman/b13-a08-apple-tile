@@ -1,5 +1,6 @@
 import { Button, Card, CloseButton } from "@heroui/react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const TileCard = ({ tile }) => {
@@ -12,6 +13,7 @@ const TileCard = ({ tile }) => {
     dimensions,
     material,
     inStock,
+    id,
   } = tile;
   return (
     <Card>
@@ -30,7 +32,9 @@ const TileCard = ({ tile }) => {
             </span>
             <span className="text-xs text-muted">{dimensions}</span>
           </div>
-          <Button className="w-full sm:w-auto">View Detail</Button>
+          <Link href={`tiles/${id}`}>
+            <Button className="w-full sm:w-auto">View Detail</Button>
+          </Link>
         </Card.Footer>
       </div>
     </Card>
