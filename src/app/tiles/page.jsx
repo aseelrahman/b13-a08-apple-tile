@@ -1,19 +1,18 @@
+import TileCard from "@/components/shared/TileCard";
 import { getTiles } from "@/lib/data";
 import React from "react";
-import TileCard from "../shared/TileCard";
 
-const TopGenerations = async () => {
+const Tiles = async () => {
   const tiles = await getTiles();
-
-  const topTiles = tiles.slice(0, 4);
+  console.log(tiles);
 
   return (
     <div className="my-20">
       <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold text-sky-500 text-center mb-5">
-        Our Most Popular Tiles
+        All Tiles
       </h1>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {topTiles.map((tile) => {
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        {tiles.map((tile) => {
           return <TileCard key={tile.id} tile={tile} />;
         })}
       </div>
@@ -21,4 +20,4 @@ const TopGenerations = async () => {
   );
 };
 
-export default TopGenerations;
+export default Tiles;
