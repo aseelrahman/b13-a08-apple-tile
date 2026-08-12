@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -11,18 +12,32 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 
-const Register = () => {
-  const onSubmit = (e) => {
+const SignUpPage = () => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = {};
-    // Convert FormData to plain object
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
-    console.log(data, "Form data");
 
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+    const name = e.target.name.value;
+    const image = e.target.photoUrl.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const { data, error } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+      image,
+    });
+    console.log({ data, error });
+
+    // const formData = new FormData(e.currentTarget);
+    // const data = {};
+    // // Convert FormData to plain object
+    // formData.forEach((value, key) => {
+    //   data[key] = value.toString();
+    // });
+    // console.log(data, "Form data");
+
+    // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
   };
   return (
     <div className="bg-black">
@@ -95,7 +110,7 @@ const Register = () => {
           </TextField>
           <small>
             Already have an account?{" "}
-            <Link href={`/login`} className="text-blue-500">
+            <Link href={`/signin`} className="text-blue-500">
               Login Here
             </Link>
           </small>
@@ -105,7 +120,7 @@ const Register = () => {
             </Button>
             <Button type="submit" className={`w-1/2`}>
               <Check />
-              Login
+              Register
             </Button>
           </div>
         </Form>
@@ -114,4 +129,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SignUpPage;

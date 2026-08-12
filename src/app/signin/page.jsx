@@ -11,7 +11,7 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 
-const Login = () => {
+const SignInPage = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -77,7 +77,7 @@ const Login = () => {
           </TextField>
           <small>
             Don&apos;t have an account?{" "}
-            <Link href={`/register`} className="text-blue-500">
+            <Link href={`/signup`} className="text-blue-500">
               Register Here
             </Link>
           </small>
@@ -96,4 +96,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignInPage;
