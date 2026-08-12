@@ -11,8 +11,10 @@ import {
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,12 +23,17 @@ const SignUpPage = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
+    // ----- SignUp -----
+
     const { data, error } = await authClient.signUp.email({
       name,
       email,
       password,
       image,
     });
+    if (!error) {
+      router.push("/");
+    }
     console.log({ data, error });
 
     // const formData = new FormData(e.currentTarget);

@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -12,15 +13,33 @@ import {
 import Link from "next/link";
 
 const SignInPage = () => {
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = {};
-    // Convert FormData to plain object
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
+
+    const name = e.target.name.value;
+    const image = e.target.photoUrl.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    // ----- SignIn -----
+
+    const { data, error } = await authClient.signIn.email({
+      email,
+      password,
+      rememberMe: false,
+      callbackURL: "/",
     });
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+    console.log({ data, error });
+
+    // const formData = new FormData(e.currentTarget);
+    // const data = {};
+    // // Convert FormData to plain object
+    // formData.forEach((value, key) => {
+    //   data[key] = value.toString();
+    // });
+    // console.log(data, "Form data");
+
+    // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
   };
   return (
     <div className="bg-black">
