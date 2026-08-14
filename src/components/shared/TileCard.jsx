@@ -1,4 +1,4 @@
-import { Button, Card, CloseButton } from "@heroui/react";
+import { Button, Card, Chip, CloseButton } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -16,7 +16,8 @@ const TileCard = ({ tile }) => {
     id,
   } = tile;
   return (
-    <Card>
+    <Card className="relative">
+      <Chip className="absolute top-3 right-4 z-10">{category.toUpperCase()}</Chip>
       <div className="relative h-[140px] w-full shrink-0 overflow-hidden rounded-2xl sm:h-[120px] sm:w-[120px] mx-auto">
         <Image src={"/logo.png"} alt="logo" fill />
       </div>
