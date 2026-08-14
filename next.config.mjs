@@ -9,7 +9,6 @@ const nextConfig = {
         hostname: '**',
         port: '',
         pathname: '**',
-        search: '',
       },
     ],
   },
