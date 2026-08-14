@@ -25,7 +25,7 @@ const TileDetailPage = async ({ params }) => {
       {/* Left: image */}
       <div className="relative aspect-square w-full md:w-1/2 overflow-hidden rounded-xl bg-stone-100">
         <Image
-          src={"/logo.png"}
+          src={image}
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
