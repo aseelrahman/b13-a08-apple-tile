@@ -1,6 +1,7 @@
 import { getTileDetails, getTiles } from "@/lib/data";
 import { Button } from "@heroui/react";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import React from "react";
 
 const TileDetailPage = async ({ params }) => {
@@ -8,6 +9,10 @@ const TileDetailPage = async ({ params }) => {
   const tiles = await getTiles();
   const tile = tiles.find((t) => t.id === id);
   console.log(tile);
+
+  if (!tile) {
+    notFound();
+  }
   const {
     title,
     description,

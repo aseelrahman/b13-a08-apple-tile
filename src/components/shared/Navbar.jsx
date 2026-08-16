@@ -5,6 +5,7 @@ import Image from "next/image";
 import NavLink from "./NavLink";
 import { Avatar, Button } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -14,9 +15,12 @@ const NAV_ITEMS = [
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   const handleSignOut = async () => {
     await authClient.signOut();
+    router.push('/');
+    router.refresh();
   };
 
   const userData = authClient.useSession();
